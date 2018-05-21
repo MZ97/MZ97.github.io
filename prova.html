@@ -1,0 +1,160 @@
+<html>
+<head>
+<title>Prenota il tuo Volo</title>
+<link rel = "stylesheet" type = "text/css" href = "stile.css">
+<script src = "jquery-2.1.1.js"></script>
+<script src = "jquery.hslide.js"></script>
+<script type = "text/javascript">
+
+var nome,cognome,recapito,dp,mp,gp,ap,dr,mr,gr,ar;
+    
+    
+$(document).ready(function(){
+
+$("#an").change(function(){
+   $("#A").hide();
+   $("#RGiorno").hide();
+   $("#RMese").hide();
+   $("#RAnno").hide();
+});
+    
+$("#ar").change(function(){
+   $("#A").fadeIn();
+   $("#RGiorno").fadeIn();
+   $("#RMese").fadeIn();
+   $("#RAnno").fadeIn();
+});
+$(".obb").focus(function(){
+   $(this).css("background-color","yellow"); 
+});
+$(".obb").blur(function(){
+   if($(this).val()=="") 
+   {
+    $(this).css("background-color","white");
+    $(this).css("border-color","red");
+   }
+    else
+   {
+    $(this).css("background-color","white");
+    $(this).css("border-color","white");
+   } 
+    if($(this).val()==0)
+    {
+    $(this).css("background-color","white");
+    $(this).css("border-color","red");
+    }
+    else
+    {
+    $(this).css("background-color","white");
+    $(this).css("border-color","white");
+    } 
+});
+   
+$("#invia").click(function(){
+    if($("#nome").val()=="" || $("#cognome").val()=="" || $("#recapito").val()=="")
+    {
+     $(this).css("border-color","red");
+     alert("TUTTI I CAMPI SONO OBBLIGATORI");
+    }
+    else
+    {
+     nome=$("#nome").val();
+     cognome=$("#cognome").val();
+     recapito=$("#recapito").val();
+     dp=$("#Da").val();
+     mp=$("#PMese").val();
+     gp=$("#PGiorno").val();
+     ap=$("#PAnno").val();
+     dr=$("#A").val();
+     mr=$("#RMese").val();
+     gr=$("#RGiorno").val();
+     ar=$("#RAnno").val();
+        var x = document.createElement("br");
+     $("#riepilogo").append(nome);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(cognome);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(recapito);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(dp);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(mp);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(gp);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(ap);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(dr);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(mr);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(gr);
+        $("#riepilogo").append(x);
+        $("#riepilogo").append(ar);
+        $("#riepilogo").append(x);
+    }
+});
+    
+    
+    
+    
+    
+$("#reset").click(function(){
+   location.reload(); 
+   $("#nome").val("");
+   $("#cognome").val("");
+   $("#recapito").val("");
+   $("#DA").val(0);
+   $("#PGiorno").val(0);
+   $("#PMese").val(0);
+   $("#PAnno").val(0);
+   $("#A").val(0);
+   $("#RGiorno").val(0);
+   $("#RMese").val(0);
+   $("#RAnno").val(0);
+});
+    
+    
+$("#galleria").hslide();
+});
+    
+    
+</script>
+</head>
+
+<body>
+<div id="centercont">
+	<form>
+		<div id="prenota">
+			<h3>Prenota il tuo Volo</h3>
+				<input type="radio" name="biglietto" id="ar" value="Andata e Ritorno" checked/>Andata e Ritorno
+				<input type="radio" name="biglietto" id="an"  value="Solo Andata"/>Solo Andata
+				<br>
+				<br>
+				<label for="nome">Nome:</label><br> <input type="text" id="nome" class="obb"/>
+				<br>
+				<label for="cognome">Cognome:</label><br> <input type="text" id="cognome" class="obb"/>
+				<br>
+				<label for="recapito">Recapito:</label><br> <input type="text" id="recapito" class="obb"/>
+				<br><br>
+			<div id="selezioni">
+				<script src = "selezioni.js"></script>
+			</div>	
+			<br>	
+			<input type="button" id="invia" value="Conferma"/>   <input type="button" id="reset" value="Reset"/>
+			<br><br>
+		</div>
+	</form>
+
+	<div id="riepilogo"></div>
+</div>
+    
+<div id="galleria">
+    <div id="img1"><img src="foto/img1.jpg"></div>
+    <div id="img2"><img src="foto/img2.jpg"></div>
+    <div id="img3"><img src="foto/img3.jpg"></div>
+    <div id="img4"><img src="foto/img4.jpg"></div>
+    <div id="img5"><img src="foto/img5.jpg"></div>
+</div>
+</body>
+</html>
